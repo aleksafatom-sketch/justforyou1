@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>♡</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           ФОН
+        ========================= */
+
+        .lock-screen {
+
+            min-height: 100vh;
+
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.35),
+                    rgba(0, 0, 0, 0.55)
+                ),
+                url("photo1.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+        }
+
+
+        /* =========================
+           ОСНОВНИЙ БЛОК
+        ========================= */
+
+        .lock-content {
+
+            width: 360px;
+
+            text-align: center;
+
+            padding: 35px 25px;
+
+            background: rgba(255, 255, 255, 0.10);
+
+            backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255, 255, 255, 0.25);
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+
+        /* =========================
+           СЕРДЕЧКО
+        ========================= */
+
+        .heart {
+
+            font-size: 38px;
+
+            margin-bottom: 12px;
+
+            animation: heartbeat 2s infinite;
+        }
+
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+
+        /* =========================
+           ТЕКСТ
+        ========================= */
+
+        h1 {
+
+            font-size: 28px;
+
+            font-weight: 500;
+
+            margin-bottom: 8px;
+        }
+
+
+        .subtitle {
+
+            font-size: 20px;
+
+            opacity: 0.75;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           КРУЖЕЧКИ ПАРОЛЯ
+        ========================= */
+
+        .password-dots {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 9px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .password-dots span {
+
+            width: 9px;
+
+            height: 9px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.35);
+
+            transition: 0.2s;
+        }
+
+
+        .password-dots span.active {
+
+            background: white;
+
+            box-shadow:
+                0 0 8px rgba(255, 255, 255, 0.9),
+                0 0 18px rgba(255, 255, 255, 0.5);
+
+            transform: scale(1.25);
+        }
+
+
+        /* =========================
+           КЛАВІАТУРА
+        ========================= */
+
+        .keypad {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
+
+            width: 240px;
+
+            margin: 0 auto 25px;
+        }
+
+
+        /* =========================
+           КНОПКИ ЦИФР
+        ========================= */
+
+        .key {
+
+            width: 68px;
+
+            height: 68px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.25);
+
+            background:
+                rgba(255, 255, 255, 0.12);
+
+            color: white;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.12s,
+                background 0.12s,
+                box-shadow 0.12s;
+        }
+
+
+        /* Коли наводиш */
+
+        .key:hover {
+
+            background:
+                rgba(255, 255, 255, 0.25);
+
+            box-shadow:
+                0 0 15px
+                rgba(255, 255, 255, 0.25);
+
+            transform: scale(1.05);
+        }
+
+
+        /* Коли натискаєш */
+
+        .key:active {
+
+            transform: scale(0.88);
+
+            background:
+                rgba(255, 255, 255, 0.40);
+
+            box-shadow:
+                0 0 25px
+                rgba(255, 255, 255, 0.6);
+        }
+
+
+        /* Порожнє місце */
+
+        .key.empty {
+
+            visibility: hidden;
+        }
+
+
+        /* =========================
+           КНОПКА СТЕРТИ
+        ========================= */
+
+        .delete {
+
+            font-size: 24px;
+        }
+
+
+        /* =========================
+           КНОПКА ВІДКРИТИ
+        ========================= */
+
+        .open-button {
+
+            border: none;
+
+            padding: 13px 35px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255, 255, 255, 0.18);
+
+            color: white;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.25);
+
+            transition: 0.2s;
+        }
+
+
+        .open-button:hover {
+
+            background:
+                rgba(255, 255, 255, 0.30);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           ПОМИЛКА
+        ========================= */
+
+        .error {
+
+            min-height: 20px;
+
+            margin-top: 12px;
+
+            font-size: 13px;
+
+            opacity: 0.9;
+        }
+
+
+        /* =========================
+           АНІМАЦІЯ ПОМИЛКИ
+        ========================= */
+
+        .shake {
+
+            animation: shake 0.35s;
+        }
+
+
+        @keyframes shake {
+
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-8px);
+            }
+
+            50% {
+                transform: translateX(8px);
+            }
+
+            75% {
+                transform: translateX(-8px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+
+        /* =========================
+           ПЛАВНИЙ ПЕРЕХІД
+        ========================= */
+
+        .fade-out {
+
+            animation:
+                fadeOut 0.5s forwards;
+        }
+
+
+        @keyframes fadeOut {
+
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           ТЕЛЕФОН
+        ========================= */
+
+        @media (max-width: 500px) {
+
+            .lock-content {
+
+                width: calc(100% - 30px);
+
+                padding: 30px 18px;
+
+                border-radius: 25px;
+            }
+
+
+            .keypad {
+
+                width: 225px;
+
+                gap: 12px;
+            }
+
+
+            .key {
+
+                width: 64px;
+
+                height: 64px;
+            }
+
+
+            .subtitle {
+
+                font-size: 18px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         ЕКРАН ВХОДУ
+    ========================= -->
+
+    <div class="lock-screen">
+
+        <div
+            class="lock-content"
+            id="lockContent"
+        >
+
+            <!-- СЕРДЕЧКО -->
+
+            <div class="heart">
+                ♡
+            </div>
+
+
+            <!-- ТЕКСТ -->
+
+            <p class="subtitle">
+                Введи код
+            </p>
+
+
+            <!-- КРУЖЕЧКИ ПАРОЛЯ -->
+
+            <div
+                class="password-dots"
+                id="passwordDots"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <!-- КЛАВІАТУРА -->
+
+            <div class="keypad">
+
+
+                <button
+                    class="key"
+                    onclick="addNumber(1)"
+                >
+                    1
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="addNumber(2)"
+                >
+                    2
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="addNumber(3)"
+                >
+                    3
+                </button>
+
+
+
+                <button
+                    class="key"
+                    onclick="addNumber(4)"
+                >
+                    4
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="addNumber(5)"
+                >
+                    5
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="addNumber(6)"
+                >
+                    6
+                </button>
+
+
+
+                <button
+                    class="key"
+                    onclick="addNumber(7)"
+                >
+                    7
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="addNumber(8)"
+                >
+                    8
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="addNumber(9)"
+                >
+                    9
+                </button>
+
+
+
+                <button
+                    class="key empty"
+                >
+                </button>
+
+
+                <button
+                    class="key"
+                    onclick="addNumber(0)"
+                >
+                    0
+                </button>
+
+
+                <button
+                    class="key delete"
+                    onclick="deleteNumber()"
+                >
+                    ⌫
+                </button>
+
+            </div>
+
+
+            <!-- КНОПКА ВІДКРИТИ -->
+
+            <button
+                class="open-button"
+                onclick="checkPassword()"
+            >
+                Відкрити
+            </button>
+
+
+            <!-- ПОВІДОМЛЕННЯ -->
+
+            <p
+                class="error"
+                id="errorMessage"
+            ></p>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+
+        /* =================================
+           ПАРОЛЬ
+        ================================= */
+
+        const correctPassword = "5391757915";
+
+
+        let enteredPassword = "";
+
+
+
+        /* =================================
+           ДОДАТИ ЦИФРУ
+        ================================= */
+
+        function addNumber(number) {
+
+            if (enteredPassword.length >= 10) {
+                return;
+            }
+
+            enteredPassword += number;
+
+            updateDots();
+        }
+
+
+
+        /* =================================
+           ОНОВИТИ КРУЖЕЧКИ
+        ================================= */
+
+        function updateDots() {
+
+            const dots =
+                document.querySelectorAll(
+                    ".password-dots span"
+                );
+
+
+            dots.forEach(
+                (dot, index) => {
+
+                    if (
+                        index <
+                        enteredPassword.length
+                    ) {
+
+                        dot.classList.add(
+                            "active"
+                        );
+
+                    } else {
+
+                        dot.classList.remove(
+                            "active"
+                        );
+
+                    }
+
+                }
+            );
+        }
+
+
+
+        /* =================================
+           СТЕРТИ ОСТАННЮ ЦИФРУ
+        ================================= */
+
+        function deleteNumber() {
+
+            enteredPassword =
+                enteredPassword.slice(0, -1);
+
+            updateDots();
+        }
+
+
+
+        /* =================================
+           ПЕРЕВІРИТИ ПАРОЛЬ
+        ================================= */
+
+        function checkPassword() {
+
+            const errorMessage =
+                document.getElementById(
+                    "errorMessage"
+                );
+
+            const lockContent =
+                document.getElementById(
+                    "lockContent"
+                );
+
+
+
+            /* =========================
+               ПРАВИЛЬНИЙ ПАРОЛЬ
+            ========================= */
+
+            if (
+                enteredPassword ===
+                correctPassword
+            ) {
+
+                errorMessage.textContent =
+                    "Правильно ♡";
+
+
+                /* Плавно ховаємо екран */
+
+                lockContent.classList.add(
+                    "fade-out"
+                );
+
+
+                /* Переходимо на home.html */
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "home.html";
+
+                    },
+                    500
+                );
+
+            }
+
+
+
+            /* =========================
+               НЕПРАВИЛЬНИЙ ПАРОЛЬ
+            ========================= */
+
+            else {
+
+                errorMessage.textContent =
+                    "Здається, код неправильний";
+
+
+                lockContent.classList.add(
+                    "shake"
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        lockContent.classList.remove(
+                            "shake"
+                        );
+
+                    },
+                    350
+                );
+
+
+                enteredPassword = "";
+
+                updateDots();
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

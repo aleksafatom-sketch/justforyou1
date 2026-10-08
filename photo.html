@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Photo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #f7f5f1;
+    color: #292929;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 55vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px 20px 30px;
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 28px;
+}
+
+.title {
+    margin: 0;
+
+    font-family: 'Cinzel', serif;
+    font-size: clamp(80px, 17vw, 220px);
+    font-weight: 400;
+
+    letter-spacing: 12px;
+    line-height: 0.9;
+}
+
+.envelope-button {
+    border: none;
+    background: transparent;
+
+    padding: 0;
+
+    cursor: pointer;
+
+    color: #292929;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.25s ease;
+}
+
+.envelope-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.65;
+}
+
+.envelope-icon {
+    width: 48px;
+    height: auto;
+
+    display: block;
+}
+
+.subtitle {
+    margin-top: 28px;
+
+    font-size: 12px;
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    font-weight: 300;
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-wrapper {
+    display: none;
+
+    justify-content: center;
+
+    padding: 20px 20px 70px;
+}
+
+.letter-wrapper.open {
+    display: flex;
+}
+
+.letter {
+    width: min(700px, 100%);
+
+    background: #fff;
+
+    padding: 60px 55px;
+
+    box-shadow: 0 15px 45px rgba(0,0,0,0.06);
+}
+
+.letter-line {
+    width: 45px;
+    height: 1px;
+
+    background: #333;
+
+    margin-bottom: 30px;
+}
+
+.letter h2 {
+    font-family: 'Cinzel', serif;
+
+    font-size: 30px;
+    font-weight: 400;
+
+    margin: 0 0 30px;
+
+    letter-spacing: 2px;
+}
+
+.letter p {
+    font-size: 14px;
+    line-height: 2;
+
+    font-weight: 300;
+
+    margin: 0;
+
+    white-space: pre-line;
+}
+
+.close-letter {
+    margin-top: 40px;
+
+    padding: 12px 26px;
+
+    border: none;
+
+    background: #dededb;
+
+    border-radius: 50px;
+
+    font-family: 'Cinzel', serif;
+
+    letter-spacing: 2px;
+    font-size: 11px;
+
+    cursor: pointer;
+
+    color: #333;
+
+    transition: 0.25s;
+}
+
+.close-letter:hover {
+    background: #e9e9e7;
+
+    box-shadow: 0 0 20px white;
+}
+
+
+/* =========================
+   PHOTOS SECTION
+========================= */
+
+.photos-section {
+    padding: 40px 7% 100px;
+}
+
+.photos {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 70px 60px;
+}
+
+
+/* =========================
+   POLAROID
+========================= */
+
+.polaroid {
+    background: #fff;
+
+    padding: 14px 14px 20px;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+    position: relative;
+
+    transition: box-shadow 0.25s ease;
+}
+
+.polaroid:hover {
+    box-shadow: 0 12px 32px rgba(0,0,0,0.11);
+}
+
+
+/*
+    Тут немає 3D-анімації.
+
+    Фото залишається звичайним
+    чітким зображенням.
+*/
+
+.photo-inner {
+    position: relative;
+
+    width: 100%;
+}
+
+
+/* =========================
+   PHOTO FRONT
+========================= */
+
+.photo-front {
+    position: relative;
+
+    width: 100%;
+
+    background: #fff;
+}
+
+.photo-front img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+    filter: none;
+    -webkit-filter: none;
+
+    transform: none;
+    -webkit-transform: none;
+}
+
+
+/* =========================
+   TEXT BACK
+========================= */
+
+.photo-back {
+    display: none;
+
+    width: 100%;
+
+    min-height: 320px;
+
+    background: #f7f5f1;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 45px 35px;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 14px;
+    line-height: 1.9;
+
+    font-weight: 300;
+
+    color: #333;
+}
+
+
+/* =========================
+   OPENED PHOTO
+========================= */
+
+.polaroid.flipped .photo-front {
+    display: none;
+}
+
+.polaroid.flipped .photo-back {
+    display: flex;
+}
+
+
+/* =========================
+   CAPTION
+========================= */
+
+.caption {
+    margin-top: 15px;
+
+    text-align: center;
+
+    font-family: 'Cinzel', serif;
+
+    font-size: 13px;
+
+    letter-spacing: 1.5px;
+
+    color: #333;
+}
+
+
+/* =========================
+   END
+========================= */
+
+.end {
+    text-align: center;
+
+    padding: 40px 20px 90px;
+}
+
+.end h2 {
+    font-family: 'Cinzel', serif;
+
+    font-size: clamp(28px, 5vw, 48px);
+
+    font-weight: 400;
+
+    letter-spacing: 4px;
+
+    margin: 0 0 18px;
+}
+
+.end p {
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    font-weight: 300;
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back {
+    display: inline-block;
+
+    margin-top: 60px;
+
+    padding: 15px 35px;
+
+    border-radius: 50px;
+
+    background: #dededb;
+
+    color: #333;
+
+    text-decoration: none;
+
+    font-family: 'Cinzel', serif;
+
+    letter-spacing: 2px;
+
+    font-size: 13px;
+
+    transition: 0.25s;
+}
+
+.back:hover {
+    background: #e9e9e7;
+
+    box-shadow: 0 0 20px white;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .hero {
+        min-height: 48vh;
+
+        padding: 30px 15px;
+    }
+
+    .title-row {
+        gap: 16px;
+    }
+
+    .title {
+        font-size: clamp(58px, 18vw, 120px);
+
+        letter-spacing: 6px;
+    }
+
+    .envelope-icon {
+        width: 34px;
+    }
+
+    .subtitle {
+        margin-top: 22px;
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
+    }
+
+
+    /* LETTER */
+
+    .letter {
+        padding: 40px 25px;
+    }
+
+    .letter h2 {
+        font-size: 25px;
+    }
+
+    .letter p {
+        font-size: 13px;
+
+        line-height: 1.8;
+    }
+
+
+    /* PHOTOS */
+
+    .photos-section {
+        padding: 25px 20px 70px;
+    }
+
+    .photos {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .photo-back {
+        min-height: 260px;
+
+        padding: 35px 25px;
+
+        font-size: 13px;
+
+        line-height: 1.8;
+    }
+
+    .caption {
+        font-size: 12px;
+    }
+
+
+    /* END */
+
+    .end {
+        padding-bottom: 70px;
+    }
+
+    .back {
+        margin-top: 45px;
+    }
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 400px) {
+
+    .title-row {
+        gap: 10px;
+    }
+
+    .title {
+        font-size: 55px;
+
+        letter-spacing: 4px;
+    }
+
+    .envelope-icon {
+        width: 29px;
+    }
+
+    .photos-section {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .polaroid {
+        padding: 10px 10px 17px;
+    }
+
+    .photo-back {
+        min-height: 230px;
+
+        padding: 25px 20px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="title-row">
+
+        <h1 class="title">PHOTO</h1>
+
+
+        <button
+            class="envelope-button"
+            onclick="openLetter()"
+            aria-label="Відкрити лист"
+        >
+
+            <svg
+                class="envelope-icon"
+                viewBox="0 0 64 46"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+
+                <rect
+                    x="1.5"
+                    y="1.5"
+                    width="61"
+                    height="43"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                />
+
+                <path
+                    d="M2.5 3 L32 27 L61.5 3"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+
+                <path
+                    d="M2.5 43 L24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                />
+
+                <path
+                    d="M61.5 43 L40 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                />
+
+            </svg>
+
+        </button>
+
+    </div>
+
+
+    <div class="subtitle">
+        little pieces of us
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LETTER
+========================= -->
+
+<section
+    class="letter-wrapper"
+    id="letterWrapper"
+>
+
+    <div class="letter">
+
+        <div class="letter-line"></div>
+
+        <h2>For you</h2>
+
+        <p>
+У нас було стільки класних моментів але нажаль ми не все змогли сфотографувати, но таке лшиться в пам'яті, а щось можеш згадати зараз, просто на любу фотку натисни
+        </p>
+
+
+        <button
+            class="close-letter"
+            onclick="closeLetter()"
+        >
+            CLOSE
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     25 PHOTOS
+========================= -->
+
+<section class="photos-section">
+
+    <div class="photos">
+
+
+        <!-- PHOTO 1 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture1.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                    Це називається пішли з коледжом гуляти, і я то думала що тобі аліна подобалась і тільки через часу трохи ти сказав так я не за аліною бігав а за самокатом хахахах
+                </div>
+
+            </div>
+
+            <div class="caption">
+                я тоді сміялась
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 2 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture2.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                    Найпері квіти від тебе, я коли принесла додому залишила їх в душі з водичкою, потім кожну ветку окремо ще й а потім вирішила засушити щее 
+                </div>
+
+            </div>
+
+            <div class="caption">
+                Perfect
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 3 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture3.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                  Те що ти любиш згадувати як чуть чуть крінж, скажи ще дякую що я не встаила переписку, де було хахахаха, клянусь мізінчиком
+                </div>
+
+            </div>
+
+            <div class="caption">
+                this moment
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 4 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture4.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                  Коли тільки починали общатись нормально, то помню це Таня скинула мені хахахах 
+                </div>
+
+            </div>
+
+            <div class="caption">
+                  my person
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 5 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture5.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                    Коли я побачила тоді цей репост на всю хату пищала від щастя если шо
+                </div>
+
+            </div>
+
+            <div class="caption">
+            always ♡
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 6 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture6.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                   але це забавно булооо
+                </div>
+
+            </div>
+
+            <div class="caption">
+                a little memory
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 7 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture7.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                    В цей день не спали з тобою дуже довго, писали щось, узнавали краще друг друга                </div>
+
+            </div>
+
+            <div class="caption">
+                that day
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 8 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture8.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                    Я понмю ці репости тані хіххіх
+                </div>
+
+            </div>
+
+            <div class="caption">
+                прикольнааааа
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 9 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture9.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                    Від тебе вкусненькеее
+                </div>
+
+            </div>
+
+            <div class="caption">
+                було смачно
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 10 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture10.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                    Ми разом грали в рб, і робили скини ну а точншіе я робила хахха 
+                </div>
+
+            </div>
+
+            <div class="caption">
+             мой тигр
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 11 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture11.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                    Ми тут просто чілим собііі
+                </div>
+
+            </div>
+
+            <div class="caption">
+                our story
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 12 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture12.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                    якщо у нас буде син надіюсь він буде такм ж мілашкою
+                </div>
+
+            </div>
+
+            <div class="caption">
+                remember this
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 13 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture13.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                  Резко захоітла пельмені і ми пішли разом, но кое хто рішив фотосесію влаштувати
+                </div>
+
+            </div>
+
+            <div class="caption">
+                cute  
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 14 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture14.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                    1 вересня і наш любімий мак на чайці
+                </div>
+
+            </div>
+
+            <div class="caption">
+                Було смачно
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 15 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture15.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+               мій хлопець у мене вдома
+                </div>
+
+            </div>
+
+            <div class="caption">
+                forever
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 16 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture16.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                у мене найкращий фотограф
+                </div>
+
+            </div>
+
+            <div class="caption">
+                pretty
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 17 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture17.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                  Це було смачно, так ще й прикінь, безкштовно хіхіхі
+                </div>
+
+            </div>
+
+            <div class="caption">
+                this one
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 18 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture18.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                    Гляділи разом оліточку, бо ваші по гриби, ну і можна ще згадати лице дарини хахаха
+                </div>
+
+            </div>
+
+            <div class="caption">
+                don't forget
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 19 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture19.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                   Але вона бубочка, а ми на таборі тууууут
+                </div>
+
+            </div>
+
+            <div class="caption">
+                more of this
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 20 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture20.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                  На крейдяніііій
+                </div>
+
+            </div>
+
+            <div class="caption">
+                just because
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 21 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture21.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                   а тут мене проводжають хах
+                </div>
+
+            </div>
+
+            <div class="caption">
+                favorite
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 22 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture22.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                  і знову крейдяна
+                </div>
+
+            </div>
+
+            <div class="caption">
+                more memories
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 23 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture23.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                   Ми разом гуляли помню, і циган мій телефон стибзив тоооо
+                </div>
+
+            </div>
+
+            <div class="caption">
+                Мілашка
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO 24 -->
+
+        <div class="polaroid" onclick="flipCard(this)">
+
+            <div class="photo-inner">
+
+                <div class="photo-front">
+                    <img src="picture24.jpg" alt="">
+                </div>
+
+                <div class="photo-back">
+                  У батьків годовщина, і тортик побігла робити, ну а як же без тебе, завжди нада тобі кусочок
+                </div>
+
+            </div>
+
+            <div class="caption">
+                Було смачно
+            </div>
+
+        </div>
+
+        <!-- PHOTO 25 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture25.jpg" alt="Фото 25">
+                </div>
+                <div class="photo-back">
+                    тільки влаштувалась і тобі фоточки, я ще не знала ту що мене чекає хахах
+                </div>
+            </div>
+            <div class="caption">
+                перші дні
+            </div>
+        </div>
+        <!-- PHOTO 26 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture26.jpg" alt="Фото 26">
+                </div>
+                <div class="photo-back">
+                   щасливенька після того як побачились
+                </div>
+            </div>
+            <div class="caption">
+             memory
+            </div>
+        </div>
+
+        <!-- PHOTO 27 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture27.jpg" alt="Фото 27">
+                </div>
+                <div class="photo-back">
+                 тут кое хто так сильно загорів що тепер після стрижки
+                </div>
+            </div>
+            <div class="caption">
+                little moments
+            </div>
+        </div>
+
+        <!-- PHOTO 28 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture28.jpg" alt="Фото 28">
+                </div>
+                <div class="photo-back">
+                    Це фоточка від коханого, але вже балуваааав
+                </div>
+            </div>
+            <div class="caption">
+              тигр
+            </div>
+        </div>
+
+        <!-- PHOTO 29 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture29.jpg" alt="Фото 29">
+                </div>
+                <div class="photo-back">
+                  тут і не знаю що сказати хахахах
+                </div>
+            </div>
+            <div class="caption">
+               неса слів
+            </div>
+        </div>
+
+        <!-- PHOTO 30 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture30.jpg" alt="Фото 30">
+                </div>
+                <div class="photo-back">
+                  Знаю що це було ну дуже боляче, як ж ти розізлив то мене
+                </div>
+            </div>
+            <div class="caption">
+                бібач
+            </div>
+        </div>
+
+        <!-- PHOTO 31 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture31.jpg" alt="Фото 31">
+                </div>
+                <div class="photo-back">
+                    Ми просто дві мілашкииии
+                </div>
+            </div>
+            <div class="caption">
+                makes me smile
+            </div>
+        </div>
+
+        <!-- PHOTO 32 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture32.jpg" alt="Фото 32">
+                </div>
+                <div class="photo-back">
+                  Ти сам це робиш просто бо хочеш, та навіть перед меншими ти не соромишся, це просто реально дуже трогательно
+                </div>
+            </div>
+            <div class="caption">
+               Beautiful boy
+            </div>
+        </div>
+
+        <!-- PHOTO 33 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture33.jpg" alt="Фото 33">
+                </div>
+                <div class="photo-back">
+                    коли їхали з церквою, тепла погода,такий вайб, і так ще й ти поруч був
+                </div>
+            </div>
+            <div class="caption">
+                this memory
+            </div>
+        </div>
+
+        <!-- PHOTO 34 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture34.jpg" alt="Фото 34">
+                </div>
+                <div class="photo-back">
+               кое хто так бачу рішив побалувати мене
+                </div>
+            </div>
+            <div class="caption">
+                а пахне яяяяк
+            </div>
+        </div>
+
+        <!-- PHOTO 35 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture35.jpg" alt="Фото 35">
+                </div>
+                <div class="photo-back">
+                  я так і не видалила цю фоткуууу
+                </div>
+            </div>
+            <div class="caption">
+                saved here ♡
+            </div>
+        </div>
+
+        <!-- PHOTO 36 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture36.jpg" alt="Фото 36">
+                </div>
+                <div class="photo-back">
+                   Ідемо з зібрпння або співанки, і щасливіііі
+                </div>
+            </div>
+            <div class="caption">
+                warm memories
+            </div>
+        </div>
+
+        <!-- PHOTO 37 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture37.jpg" alt="Фото 37">
+                </div>
+                <div class="photo-back">
+                це було геть так мило, я там аж засмущалась
+                </div>
+            </div>
+            <div class="caption">
+                1 вересня
+            </div>
+        </div>
+
+        <!-- PHOTO 38 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture38.jpg" alt="Фото 38">
+                </div>
+                <div class="photo-back">
+                    молодіжка в емануїлі, це був прекасний вечір, люблю тебеее
+                </div>
+            </div>
+            <div class="caption">
+                our time
+            </div>
+        </div>
+
+        <!-- PHOTO 39 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture39.jpg" alt="Фото 39">
+                </div>
+                <div class="photo-back">
+                    хочу ще 10, не 100 таких фоточок, пеже пеже
+                </div>
+            </div>
+            <div class="caption">
+                us
+            </div>
+        </div>
+
+        <!-- PHOTO 40 -->
+        <div class="polaroid" onclick="flipCard(this)">
+            <div class="photo-inner">
+                <div class="photo-front">
+                    <img src="picture40.jpg" alt="Фото 40">
+                </div>
+                <div class="photo-back">
+                    Весело тут булооо, молодіжка, і ми годину біля дома, а я вже босяком хіхіхі
+                </div>
+            </div>
+            <div class="caption">
+              втомлена але щаслива
+            </div>
+        </div>
+
+    </div>
+</section>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     END
+========================= -->
+
+<section class="end">
+
+    <h2>memories ♡</h2>
+
+    <p>
+        Маленькі моменти, які залишаються з нами.
+    </p>
+
+    <a
+        href="home.html"
+        class="back"
+    >
+        BACK
+    </a>
+
+</section>
+
+
+
+<script>
+
+/* =========================
+   PHOTO → TEXT
+========================= */
+
+function flipCard(card) {
+
+    card.classList.toggle("flipped");
+
+}
+
+
+/* =========================
+   OPEN LETTER
+========================= */
+
+function openLetter() {
+
+    const letter = document.getElementById("letterWrapper");
+
+    letter.classList.add("open");
+
+    setTimeout(function() {
+
+        letter.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }, 50);
+
+}
+
+
+/* =========================
+   CLOSE LETTER
+========================= */
+
+function closeLetter() {
+
+    const letter = document.getElementById("letterWrapper");
+
+    letter.classList.remove("open");
+
+}
+
+</script>
+
+</body>
+</html>

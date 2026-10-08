@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>15.06</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #f7f5f1;
+    color: #292929;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.date {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(90px, 18vw, 250px);
+    font-weight: 400;
+    letter-spacing: 8px;
+    line-height: 0.9;
+}
+
+.date-subtitle {
+    margin-top: 35px;
+    font-size: 12px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+
+/* =========================
+   STORY
+========================= */
+
+.story {
+    width: min(1150px, 92%);
+    margin: 0 auto;
+}
+
+.story-block {
+    min-height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+    margin-bottom: 130px;
+}
+
+.story-text {
+    max-width: 560px;
+    font-size: 20px;
+    line-height: 1.9;
+    font-weight: 300;
+}
+
+.story-number {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.story-photo {
+    width: 430px;
+    flex-shrink: 0;
+}
+
+.story-photo img {
+    display: block;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.story-block:nth-of-type(even) .story-photo img {
+    height: 420px;
+}
+
+.story-block:nth-of-type(3) .story-photo img {
+    height: 550px;
+}
+
+
+/* =========================
+   FIRST TEXT
+========================= */
+
+.first-text {
+    min-height: 0;
+    margin-bottom: 65px;
+    justify-content: center;
+}
+
+.first-text .story-text {
+    max-width: 850px;
+    text-align: center;
+}
+
+
+/* =========================
+   SCREENSHOTS
+========================= */
+
+.screenshots {
+    width: min(1000px, 92%);
+    margin: 0 auto 150px;
+}
+
+.screenshots-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+}
+
+.screenshot {
+    background: white;
+    padding: 12px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.07);
+}
+
+.screenshot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+/* =========================
+   TEXT ONLY
+========================= */
+
+.story-only-text {
+    max-width: 850px;
+    margin: 0 auto 130px;
+    text-align: center;
+    font-size: 23px;
+    line-height: 2;
+    font-weight: 300;
+}
+
+
+/* =========================
+   QUOTE
+========================= */
+
+.quote {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(25px, 4vw, 45px);
+    line-height: 1.5;
+    margin: 160px auto;
+    max-width: 850px;
+}
+
+
+/* =========================
+   ENDING
+========================= */
+
+.ending {
+    text-align: center;
+    padding: 80px 20px 150px;
+}
+
+.ending-date {
+    font-family: 'Cinzel', serif;
+    font-size: 65px;
+    letter-spacing: 5px;
+}
+
+.ending-text {
+    max-width: 700px;
+    margin: 40px auto 0;
+    font-size: 18px;
+    line-height: 1.9;
+    font-weight: 300;
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back {
+    display: inline-block;
+    margin-top: 60px;
+    padding: 15px 35px;
+    border-radius: 50px;
+    background: #dededb;
+    color: #333;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    font-size: 13px;
+    transition: 0.25s;
+}
+
+.back:hover {
+    background: #e9e9e7;
+    box-shadow: 0 0 20px white;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    .hero {
+        min-height: 75vh;
+        padding: 30px 15px;
+    }
+
+    .date {
+        font-size: 25vw;
+        letter-spacing: 4px;
+    }
+
+    .date-subtitle {
+        margin-top: 25px;
+        font-size: 10px;
+        letter-spacing: 4px;
+    }
+
+
+    .story {
+        width: 88%;
+    }
+
+
+    .story-block {
+        min-height: 0;
+        flex-direction: column;
+        gap: 35px;
+        margin-bottom: 90px;
+        align-items: stretch;
+    }
+
+    .story-text {
+        max-width: none;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .story-number {
+        font-size: 12px;
+        margin-bottom: 18px;
+        letter-spacing: 3px;
+    }
+
+    .story-photo {
+        width: 100%;
+    }
+
+    .story-photo img {
+        width: 100%;
+        height: 390px;
+        object-fit: cover;
+    }
+
+    .story-block:nth-of-type(even) .story-photo img {
+        height: 360px;
+    }
+
+    .story-block:nth-of-type(3) .story-photo img {
+        height: 410px;
+    }
+
+
+    /* FIRST TEXT */
+
+    .first-text {
+        margin-bottom: 45px;
+    }
+
+    .first-text .story-text {
+        text-align: left;
+    }
+
+
+    /* SCREENSHOTS */
+
+    .screenshots {
+        width: 88%;
+        margin-bottom: 100px;
+    }
+
+    .screenshots-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .screenshot {
+        padding: 8px;
+    }
+
+
+    /* TEXT ONLY */
+
+    .story-only-text {
+        width: 88%;
+        margin-bottom: 90px;
+        text-align: left;
+        font-size: 17px;
+        line-height: 1.9;
+    }
+
+
+    /* QUOTE */
+
+    .quote {
+        width: 88%;
+        font-size: 24px;
+        margin: 100px auto;
+        line-height: 1.5;
+    }
+
+
+    /* ENDING */
+
+    .ending {
+        padding: 50px 20px 100px;
+    }
+
+    .ending-date {
+        font-size: 42px;
+        letter-spacing: 3px;
+    }
+
+    .ending-text {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .back {
+        margin-top: 45px;
+        padding: 14px 30px;
+        font-size: 12px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="date">
+        15.06
+    </div>
+
+    <div class="date-subtitle">
+        one special day
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     STORY
+========================= -->
+
+<section class="story">
+
+
+    <!-- 01 -->
+
+    <div class="story-block first-text">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+                І так, як ж все починалось, я от реально думала що 15 тільки числа почали общатииись, но но нооо от тобі парочку скрінів
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         8 SCREENSHOTS
+    ========================== -->
+
+    <section class="screenshots">
+
+        <div class="screenshots-grid">
+
+            <div class="screenshot">
+                <img src="screen1.jpg" alt="Скріншот 1">
+            </div>
+
+            <div class="screenshot">
+                <img src="screen2.jpg" alt="Скріншот 2">
+            </div>
+
+            <div class="screenshot">
+                <img src="screen3.jpg" alt="Скріншот 3">
+            </div>
+
+            <div class="screenshot">
+                <img src="screen4.jpg" alt="Скріншот 4">
+            </div>
+
+            <div class="screenshot">
+                <img src="screen5.jpg" alt="Скріншот 5">
+            </div>
+
+            
+
+            <div class="screenshot">
+                <img src="screen7.jpg" alt="Скріншот 7">
+            </div>
+
+            <div class="screenshot">
+                <img src="screen8.jpg" alt="Скріншот 8">
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 02 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+                Для мене таке читати були прям дуже цікаво хіхіх, я і забулааа що ми і до того комунікували, і кое хто наче інтерес проявляв, оця фоточка яку бачиш, це ми гугляли коледжом, а світло від твого якраз таки самоката, і геть потім я узнала, ти казав що в цей день був брей ринг, і тоді казав коли я зайшла тобі прям показалась красивою як ти сказав, вся така в білому, от фото з того дня хіхіхі
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-01.jpg" alt="15.06 — фото 1">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 03 -->
+
+     <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+                Ми в групі завжди скидали це, але цей скрін, коли ти мені в особисті скинув перший раз
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-02.jpg" alt="15.06 — фото 3">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 04 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+                Тут я вирішила що отак тонко натякну, найшла відео про те що кои він грає на гітарі ну і виставляла гс від тебе хахах, цим даже горжусь, так ти ще й цю сторіс лайнув про гітару
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-03.jpg" alt="15.06 — фото 3">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 05 -->
+
+     <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+               Хахахаха, ну а на це що сказати я і не знаю навіть, просто яка я була шикарна, ну і ти тоже
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-04.jpg" alt="15.06 — фото 3">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 06 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+            Ми типу такі ще стесняшки, і я як в фільмах, переплутала чати
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-05.jpg" alt="15.06 — фото 5">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 07 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+              А зараз сонечко моє улюблене, коли мені було ну не дуже вечерез, сам знаєш через кого ну і через там леру ще, що не заступалась і мені наговорили тоді, я соьі така подумала, не буду ні з ким общатись всьо, нічого не хочу, но на ранок це побачила, і це так підняло настрій, я була така вдячна тобі 
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-06.jpg" alt="15.06 — фото 3">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 08 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+            Спершу може не сильно то поняв связь, но я все пояснююю, в цей день ми поїхали велосипедами, і ти звісно приїхав, цю історію я переказувала стільки вже разів, но це був переломний момент, коли я поняла, що он ти, хороший і може, хто знааа там подобаєшся, но тут я ще все отрицаю, ну бо а як це, і чи я йому подобаюсь, я думла не не не, но почуття не дінуться то нікуди, коли тоді я їхала вже ззаду тебе, я відчула з тобою такий спокій, це був такий прекрасний момент, а я була щасливою, ну і все ж таки влюбилась, не буду скривати 
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-07.jpg" alt="15.06 — фото 7">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 09 -->
+
+     <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+    Ну така вже бусінка тут, ну я не можуууу
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-08.jpg" alt="15.06 — фото 3">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 10 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+               Вже тоді ти починав репости коментувати, і казав що музика шо то не то, хотя вроде всьо прекрасно було, ну хотя кому як хіхіхі
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-09.jpg" alt="15.06 — фото 9">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 11 -->
+
+     <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+               Начали всякі тік токи скидати вже тут, ну і репостити там всякеееее
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-010.jpg" alt="15.06 — фото 3">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 12 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                12
+            </div>
+
+            <p>
+                Мені здається там не ідеально гарно видно всю картинку нажаль, но я питась, сенс в тому що катались великами, а потім це бачу від тебе, і я така в шоке, реально подумла тоді щось типу, реально існують такі хлопці в наш час
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-11.jpg" alt="15.06 — фото 11">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 13 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+               Будь які переписочки тоді такі вайбовенькі що я прям не можууууу
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-012.jpg" alt="15.06 — фото 3">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 14 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                14
+            </div>
+
+            
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-13.jpg" alt="15.06 — фото 13">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 15 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+            Щас плакати буду з цієї фоточки, ну це просто, я така була щаслива з цим букетом, він був прекрасним, аж до сих пір на заставці
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-14.jpg" alt="15.06 — фото 14">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- QUOTE -->
+
+    <div class="quote">
+
+        Але я сама буду заходити на цей сайт щоб все перечитувати<br>
+        
+
+    </div>
+
+
+
+    <!-- 16 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                16
+            </div>
+
+            <p>
+               Це перші здається смаколики які ти мені купив, ну або одні з перших, помню як була здивована, типу що реально хтось думає що я люблю те і купляє, я така типа ничосееее
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-15.jpg" alt="15.06 — фото 15">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 17 -->
+
+     <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+                Ну хотя тут достатньо моєї просто реакції хах
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-16.jpg" alt="15.06 — фото 3">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 18 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                18
+            </div>
+
+            <p>
+               Ну тут нас можна уже вітати, хотя ми далі стясняшками будемо по типу, а де твоя кімнатаааа
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-17.jpg" alt="15.06 — фото 17">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 19 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+                Я багато робила фото коли ми сиділи собі на крейдяній, прям вайбік
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-18.jpg" alt="15.06 — фото 3">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 20 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                20
+            </div>
+
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-19.jpg" alt="15.06 — фото 19">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 21 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+            Ну і поїздка в чернівці, після якої то і розлучились, щось не прям довго вийшло хах, но на щастя на тому не закінчилось
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-20.jpg" alt="15.06 — фото 3">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 22 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                22
+            </div>
+
+            <p>
+                І минулорічний табір наш, як на балконі сиділи там, щось собі говорили, всяке таке, Ну і Настя, без неї не можу, так як всеодно частинка історії
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-21.jpg" alt="15.06 — фото 21">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 23 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+            Тут ти позвав мене погорити коли були в сварці, но я вирішила всеодно поїхати, ти казв що Настюша не така якась все ж таки, но так і не показав тоді переписку, так що сильно е було толку від того дня
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-22.jpg" alt="15.06 — фото 3">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 24 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                24
+            </div>
+
+            <p>
+               Трохи сварились, ну часом не трохи, а дуже навіть через щооось
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-23.jpg" alt="15.06 — фото 23">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 25 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+            А потім може і краще ставало
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-24.jpg" alt="15.06 — фото 3">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 26 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                26
+            </div>
+
+            <p>
+               Но Корній, одного повідомлення тобі вистачило щоб змінити все між нами, це вибір про який ми обоє не шкодуємо
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-25.jpg" alt="15.06 — фото 25">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- 27 -->
+
+     <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                
+            </div>
+
+            <p>
+                Даже з короткою стрижкою у нас все було добре хахахаха, ну ми вчились, разом, ми дуже подорослішали за цей час, стали краще і любимо сильніше один одного
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-26.jpg" alt="15.06 — фото 3">
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- 28 -->
+
+    <div class="story-block">
+
+        <div class="story-text">
+
+            <div class="story-number">
+                28
+            </div>
+
+            <p>
+                Ну а тут ти просто крутишка, коли була в італії скидав мені хіхіхі
+            </p>
+
+        </div>
+
+        <div class="story-photo">
+
+            <img src="15-27.jpg" alt="15.06 — фото 27">
+
+        </div>
+
+    </div>
+
+
+
+<!-- =========================
+     ENDING
+========================= -->
+
+<section class="ending">
+
+    <div class="ending-date">
+        15.06 ♡
+    </div>
+
+    <div class="ending-text">
+
+      Таааак, я думаю можна підвести підсумки то нарешті, Дай подумаатииии, я ппц яка щаслива це капець, у мене такий прикольний хлопець є, у якого день народження, сонечко, не знаю чи треьа було сьомку добавляти, але це наче урок для нас, що ми тільки сильніше цінуємо один одного та зрозуміли, що ніхто не стане між нами, це все велика історія, з щасливим кінцем
+
+        <br><br>
+
+      Я так сильно люблю тебе, дякую що оюирав мене тоді, і сьогодні, та кожен день, обіцяю що все життя я також буду обирати тебе
+    </div>
+
+
+   <a href="home.html" class="back">
+    BACK
+</a>
+
+</section>
+
+
+
+</body>
+</html>
